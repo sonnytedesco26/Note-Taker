@@ -14,11 +14,11 @@ expr.get('/api/notes', (req, res) =>{
 });
 
 expr.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(path.join(__dirname, './index.html'));
 });
 
 expr.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(path.join(__dirname, './index.html'));
 });
 
 expr.post('/api/notes', (req, res) =>{
