@@ -3,37 +3,9 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 const expr = express();
+const cors = require('cors');
 
 const notes = require('./db/db.json');
-
-
-expr.listen(PORT, () => {
-    console.log(`port: ${PORT}`)
-})
-
-expr.use(express.urlencoded({extended: true}));
-expr.use(express.json());
-
-expr.get('/api/notes', (req, res) =>{
-    res.json(notes.slice(1));
-});
-
-expr.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
-});
-
-expr.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
-});
-
-expr.post('/api/notes', (req, res) =>{
-    var newNote = createNote(req.main, notes);
-    res.json(newNote);
-})
-
-expr.post('*', (req, res) =>{
-    res.sendFile(path.join(__dirname, './index.html'));
-})
 
 function createNote(main, noteArray){
     var newNote = main;
@@ -48,16 +20,47 @@ function createNote(main, noteArray){
 
     noteArray.push(newNote);
 
-    fs.writeFileSync(path.join(__dirname, './db/db.json'),
-    JSON.stringify(noteArray, null, 2)
+    fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(noteArray, null, 2)
     );
 
     return newNote;
 }
 
+
+expr.listen(PORT, () => {
+    console.log(`port: ${PORT}`);
+});
+
+expr.use(express.static('public'));
+expr.use(express.urlencoded({extended: true}));
+expr.use(express.json());
+expr.use(cors());
+
+expr.get('/api/notes', (req, res) =>{
+    res.json(notes.slice(1));
+});
+
+expr.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+expr.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './index.html'));
+});
+
+expr.get('*', (req, res) =>{
+    res.sendFile(path.join(__dirname, './index.html'));
+})
+
+expr.post('/api/notes', (req, res) =>{
+    var newNote = createNote(req.main, notes);
+    res.json(newNote);
+})
+
+
 function deleteNote(id, noteArray){
     for(i=0;i<noteArray.length;i++){
-        var note = noteArray[i];
+        let note = noteArray[i];
 
         if(note.id == id){
             noteArray.splice(i, 1);
