@@ -10,7 +10,7 @@ In order to use the application, first clone the repo. Then, using a terminal in
 
 ## Using the application
 
-![readmegif](/public/assets/images/readmegif.gif)
+![readmegif](/public/assets/images/readmevid.mp4)
 
 Once these packages are installed, all that's left to do is to run server.js using the by entering into the terminal (in the project root directory): node server.js
 
