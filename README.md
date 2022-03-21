@@ -21,6 +21,6 @@ Now in your web browser url, enter: http://localhost:3001/
 There is a save button that only shows when the note is ready (has both a title and text in the body).
 The plus button lets you start a new note without saving whatever you have currently entered.
 
-![readmevid](/public/assets/images/readmevid2.mp4)
-
+VIDEO EXAMPLE:
+https://user-images.githubusercontent.com/94385249/159201476-b4b314d9-5d23-4eec-a423-1f73eddc7a3f.mp4
 
