@@ -19,7 +19,7 @@ expr.get('/api/notes', (req, res) =>{
 });
 
 expr.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 expr.get('/', (req, res) => {
