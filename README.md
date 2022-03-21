@@ -10,7 +10,7 @@ In order to use the application, first clone the repo. Then, using a terminal in
 
 ## Using the application
 
-![readmegif](/public/assets/images/readmevid.mp4)
+![readmegif](/public/assets/images/readmegif.gif)
 
 Once these packages are installed, all that's left to do is to run server.js using the by entering into the terminal (in the project root directory): node server.js
 
@@ -20,5 +20,7 @@ Now in your web browser url, enter: http://localhost:3001/
 
 There is a save button that only shows when the note is ready (has both a title and text in the body).
 The plus button lets you start a new note without saving whatever you have currently entered.
+
+![readmevid](/public/assets/images/readmevid.mp4)
 
 
