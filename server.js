@@ -7,15 +7,15 @@ const cors = require('cors');
 
 const notes = require('./db/db.json');
 
-function createNote(main, noteArray){
-    var newNote = main;
+function createNote(body, noteArray){
+    const newNote = body;
     if(!Array.isArray(noteArray)){
         noteArray = [];
     }
     if(noteArray.length == 0){
         noteArray.push(0);
     }
-    main.id = noteArray[0];
+    body.id = noteArray[0];
     noteArray[0]++;
 
     noteArray.push(newNote);
@@ -45,15 +45,15 @@ expr.get('/notes', (req, res) => {
 });
 
 expr.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 expr.get('*', (req, res) =>{
-    res.sendFile(path.join(__dirname, './index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 })
 
 expr.post('/api/notes', (req, res) =>{
-    var newNote = createNote(req.main, notes);
+    var newNote = createNote(req.body, notes);
     res.json(newNote);
 })
 
